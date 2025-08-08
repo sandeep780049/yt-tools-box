@@ -3,17 +3,17 @@
 <div class="container">
     <h2 class="tool-title"><i class="fas fa-image"></i> YouTube Thumbnail Downloader</h2>
     <form method="POST">
-        <label for="video_url">Paste YouTube Video URL:</label>
-        <input type="text" id="video_url" name="video_url" placeholder="Enter YouTube video link" required>
+        <label for="video_url">Enter YouTube Video URL:</label>
+        <input type="url" id="video_url" name="video_url" placeholder="e.g., https://www.youtube.com/watch?v=abcd1234" required>
         <button type="submit" class="btn btn-primary">Get Thumbnail</button>
     </form>
 
     {% if thumbnail_url %}
     <div class="result-box">
         <h3>Thumbnail Preview</h3>
-        <img src="{{ thumbnail_url }}" alt="Thumbnail" class="thumbnail-img">
-        <br>
-        <a href="{{ thumbnail_url }}" class="btn btn-success" download>Download Thumbnail</a>
+        <img src="{{ thumbnail_url }}" alt="Thumbnail" style="max-width: 100%; height: auto; border-radius: 8px;">
+        <br><br>
+        <a href="{{ thumbnail_url }}" download="youtube_thumbnail.jpg" class="btn btn-success">Download Thumbnail</a>
     </div>
     {% endif %}
 </div>
