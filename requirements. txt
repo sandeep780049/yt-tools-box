@@ -1,5 +1,5 @@
-flask
-gunicorn
-requests
+Flask
 pytube
+requests
 openai
+gunicorn
