@@ -1,1 +1,30 @@
 
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="tool-title"><i class="fas fa-tags"></i> YouTube Tag Generator (AI)</h2>
+    <form method="POST">
+        <label for="video_url">Paste YouTube Video URL:</label>
+        <input type="text" id="video_url" name="video_url" placeholder="Enter YouTube video link" required>
+        <button type="submit" class="btn btn-primary">Generate Tags</button>
+    </form>
+
+    {% if tags %}
+    <div class="result-box">
+        <h3>Generated Tags</h3>
+        <textarea id="tags-box" readonly>{{ tags|join(', ') }}</textarea>
+        <br>
+        <button class="btn btn-info" onclick="copyTags()">Copy Tags</button>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function copyTags() {
+    let textArea = document.getElementById("tags-box");
+    textArea.select();
+    document.execCommand("copy");
+    alert("Tags copied to clipboard!");
+}
+</script>
+{% endblock %}
