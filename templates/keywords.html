@@ -1,1 +1,30 @@
 
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="tool-title"><i class="fas fa-key"></i> YouTube Keyword Generator (AI)</h2>
+    <form method="POST">
+        <label for="topic">Paste YouTube Video URL or Topic:</label>
+        <input type="text" id="topic" name="topic" placeholder="Enter topic or link" required>
+        <button type="submit" class="btn btn-primary">Generate Keywords</button>
+    </form>
+
+    {% if keywords %}
+    <div class="result-box">
+        <h3>Generated Keywords</h3>
+        <textarea id="keywords-box" readonly>{{ keywords|join(', ') }}</textarea>
+        <br>
+        <button class="btn btn-info" onclick="copyKeywords()">Copy Keywords</button>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function copyKeywords() {
+    let textArea = document.getElementById("keywords-box");
+    textArea.select();
+    document.execCommand("copy");
+    alert("Keywords copied to clipboard!");
+}
+</script>
+{% endblock %}
