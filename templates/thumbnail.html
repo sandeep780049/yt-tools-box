@@ -1,1 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="tool-title"><i class="fas fa-image"></i> YouTube Thumbnail Downloader</h2>
+    <form method="POST">
+        <label for="video_url">Paste YouTube Video URL:</label>
+        <input type="text" id="video_url" name="video_url" placeholder="Enter YouTube video link" required>
+        <button type="submit" class="btn btn-primary">Get Thumbnail</button>
+    </form>
 
+    {% if thumbnail_url %}
+    <div class="result-box">
+        <h3>Thumbnail Preview</h3>
+        <img src="{{ thumbnail_url }}" alt="Thumbnail" class="thumbnail-img">
+        <br>
+        <a href="{{ thumbnail_url }}" class="btn btn-success" download>Download Thumbnail</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
