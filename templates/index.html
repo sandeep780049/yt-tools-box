@@ -1,1 +1,81 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="welcome-section">
+    <h1 class="welcome-heading">Welcome</h1>
+    <h2 class="welcome-subheading">Welcome to YT Tool Box</h2>
+</div>
 
+<div class="tool-grid">
+    <div class="tool-card">
+        <i class="fas fa-image fa-3x"></i>
+        <h3><a href="{{ url_for('thumbnail') }}">Thumbnail Downloader</a></h3>
+        <p>Download any YouTube video thumbnail in full quality instantly.</p>
+    </div>
+
+    <div class="tool-card">
+        <i class="fas fa-tags fa-3x"></i>
+        <h3><a href="{{ url_for('tags') }}">Tags Generator</a></h3>
+        <p>Generate SEO-friendly tags for your YouTube videos automatically.</p>
+    </div>
+
+    <div class="tool-card">
+        <i class="fas fa-key fa-3x"></i>
+        <h3><a href="{{ url_for('keywords') }}">Keywords Generator</a></h3>
+        <p>Get trending keywords to boost video reach and audience engagement.</p>
+    </div>
+
+    <div class="tool-card">
+        <i class="fas fa-robot fa-3x"></i>
+        <h3><a href="{{ url_for('ai') }}">AI Title & Description</a></h3>
+        <p>Use AI to create catchy titles and descriptions for any topic.</p>
+    </div>
+
+    <div class="tool-card">
+        <i class="fas fa-info-circle fa-3x"></i>
+        <h3><a href="{{ url_for('video_info') }}">Video Info Viewer</a></h3>
+        <p>View complete video details including title, views, likes & upload date.</p>
+    </div>
+</div>
+
+<style>
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.welcome-heading {
+    font-size: 2.5rem;
+    color: red;
+    text-shadow: 2px 2px #888;
+}
+.welcome-subheading {
+    font-size: 1.5rem;
+    color: #444;
+}
+.tool-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+    padding: 10px;
+}
+.tool-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+.tool-card:hover {
+    transform: scale(1.03);
+}
+.tool-card a {
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+.tool-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+</style>
+{% endblock %}
