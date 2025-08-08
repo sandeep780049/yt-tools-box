@@ -1,1 +1,44 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <h2 class="tool-title"><i class="fas fa-robot"></i> AI YouTube Title & Description Generator</h2>
+    <form method="POST">
+        <label for="video_topic">Enter Video Topic:</label>
+        <input type="text" id="video_topic" name="video_topic" placeholder="e.g., How to Bake a Chocolate Cake" required>
+        <button type="submit" class="btn btn-primary">Generate</button>
+    </form>
 
+    {% if ai_title and ai_description %}
+    <div class="result-box">
+        <h3>Generated Title</h3>
+        <textarea id="ai-title" readonly>{{ ai_title }}</textarea>
+        <br>
+        <button class="btn btn-info" onclick="copyText('ai-title')">Copy Title</button>
+
+        <h3>Generated Description</h3>
+        <textarea id="ai-description" readonly>{{ ai_description }}</textarea>
+        <br>
+        <button class="btn btn-info" onclick="copyText('ai-description')">Copy Description</button>
+        <button class="btn btn-success" onclick="downloadDescription()">Download Description</button>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function copyText(id) {
+    let textArea = document.getElementById(id);
+    textArea.select();
+    document.execCommand("copy");
+    alert("Copied to clipboard!");
+}
+
+function downloadDescription() {
+    let text = document.getElementById("ai-description").value;
+    let blob = new Blob([text], { type: "text/plain" });
+    let link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "youtube_description.txt";
+    link.click();
+}
+</script>
+{% endblock %}
